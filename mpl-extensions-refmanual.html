@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.3.7: http://docutils.sourceforge.net/" />
+<title>The MPL-extensions Reference Manual</title>
+<link rel="stylesheet" href="default.css" type="text/css" />
+</head>
+<body>
+<div class="document" id="the-mpl-extensions-reference-manual">
+<h1 class="title">The MPL-extensions Reference Manual</h1>
+<table class="docinfo" frame="void" rules="none">
+<col class="docinfo-name" />
+<col class="docinfo-content" />
+<tbody valign="top">
+<tr class="field"><th class="docinfo-name">License:</th><td class="field-body">If accepted (<a class="reference" href="http://www.boost.org/more/formal_review_process.htm">http://www.boost.org/more/formal_review_process.htm</a>), will be distributed under the Boost Software License, Version 1.0. (See 
+accompanying file <tt class="docutils literal"><span class="pre">LICENSE_1_0.txt</span></tt> or copy at 
+<a class="reference" href="http://www.boost.org/LICENSE_1_0.txt">http://www.boost.org/LICENSE_1_0.txt</a>)</td>
+</tr>
+</tbody>
+</table>
+<!-- no .. section-numbering:: -->
+<div class="contents topic" id="table-of-contents">
+<p class="topic-title first"><a name="table-of-contents">Table of Contents</a></p>
+<ul class="simple">
+<li><a class="reference" href="#definitions" id="id12" name="id12">definitions</a></li>
+<li><a class="reference" href="#id3" id="id13" name="id13">application_parts</a><ul>
+<li><a class="reference" href="#synopsis" id="id14" name="id14">Synopsis</a></li>
+<li><a class="reference" href="#description" id="id15" name="id15">Description</a></li>
+<li><a class="reference" href="#header" id="id16" name="id16">Header</a></li>
+<li><a class="reference" href="#model-of" id="id17" name="id17">Model of</a></li>
+<li><a class="reference" href="#parameters" id="id18" name="id18">Parameters</a></li>
+<li><a class="reference" href="#expression-semantics" id="id19" name="id19">Expression semantics</a></li>
+<li><a class="reference" href="#example" id="id20" name="id20">Example</a></li>
+<li><a class="reference" href="#see-also" id="id21" name="id21">See also</a></li>
+</ul>
+</li>
+<li><a class="reference" href="#child-i-depth-j" id="id22" name="id22">child_i_depth_j</a><ul>
+<li><a class="reference" href="#id4" id="id23" name="id23">Synopsis</a></li>
+<li><a class="reference" href="#id5" id="id24" name="id24">Description</a></li>
+<li><a class="reference" href="#id6" id="id25" name="id25">Header</a></li>
+<li><a class="reference" href="#id7" id="id26" name="id26">Model of</a></li>
+<li><a class="reference" href="#id8" id="id27" name="id27">Parameters</a></li>
+<li><a class="reference" href="#id9" id="id28" name="id28">Expression semantics</a></li>
+<li><a class="reference" href="#id10" id="id29" name="id29">Example</a></li>
+<li><a class="reference" href="#id11" id="id30" name="id30">See also</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="definitions">
+<h1><a class="toc-backref" href="#id12" name="definitions">definitions</a></h1>
+<a class="target" id="type-only-template-id" name="type-only-template-id"></a><dl class="docutils">
+<dt><em>type-only-template-id</em></dt>
+<dd>A <a class="reference" href="http://www.open-std.org/jtc1/sc22/open/n2356/gram.html#gram.temp">template-id</a> whose template is a <a class="reference" href="#type-only-template">type-only-template</a>.</dd>
+</dl>
+<a class="target" id="type-only-template" name="type-only-template"></a><dl class="docutils">
+<dt><em>type-only-template</em></dt>
+<dd>A template whose formal arguments are all types. IOW, a <a class="reference" href="http://www.boost.org/libs/mpl/doc/refmanual/metafunction.html">Metafunction</a>
+except that the nested <tt class="docutils literal"><span class="pre">type</span></tt> typename member is not required.</dd>
+</dl>
+<!-- ********************************************************
+The following text was copied from
+$(BOOST_ROOT)/libs/mpl/doc/src/refmanual/refmanual.rst
+or other *.rst files in same directory.
+******************************************************** -->
+<!-- ********************************************************
+The rest of these were handcoded to refererence other
+parts of http://www.boost.org/libs/mpl/doc/ just as
+done by the corresponding "substitution references":
+  http://docutils.sourceforge.net/docs/user/rst/quickref.html#substitution-references-and-definitions
+in the standard mpl docs.
+******************************************************** -->
+<a class="target" id="application-parts" name="application-parts"></a></div>
+<div class="section" id="id3">
+<h1><a class="toc-backref" href="#id13" name="id3">application_parts</a></h1>
+<div class="section" id="synopsis">
+<h2><a class="toc-backref" href="#id14" name="synopsis">Synopsis</a></h2>
+<pre class="literal-block">
+template&lt; 
+      typename App
+    &gt;
+struct application_parts
+{
+    typedef vector&lt; <em>unspecified</em> &gt; type;
+};
+</pre>
+</div>
+<div class="section" id="description">
+<h2><a class="toc-backref" href="#id15" name="description">Description</a></h2>
+<p>A unary <a class="reference" href="http://www.boost.org/libs/mpl/doc/refmanual/metafunction.html">Metafunction</a> transforming an <em>n</em>-ary <a class="reference" href="#type-only-template-id">type-only-template-id</a>
+<tt class="docutils literal"><span class="pre">App</span></tt> into a <a class="reference" href="http://www.boost.org/libs/mpl/doc/refmanual/vector.html">vector</a> composed of a <em>n</em>-ary <a class="reference" href="http://www.boost.org/libs/mpl/doc/tutorial/placeholder-expression.html">Placeholder Expression</a> 
+followed by the <em>n</em> actual arguments to the template in the template-id.</p>
+<p>Currently, only values of <em>n</em> in {1..3} are implemented.</p>
+</div>
+<div class="section" id="header">
+<h2><a class="toc-backref" href="#id16" name="header">Header</a></h2>
+<pre class="literal-block">
+#include &lt;boost/mpl/application_parts.hpp&gt;
+</pre>
+</div>
+<div class="section" id="model-of">
+<h2><a class="toc-backref" href="#id17" name="model-of">Model of</a></h2>
+<p><a class="reference" href="http://www.boost.org/libs/mpl/doc/refmanual/metafunction.html">Metafunction</a></p>
+</div>
+<div class="section" id="parameters">
+<h2><a class="toc-backref" href="#id18" name="parameters">Parameters</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="19%" />
+<col width="30%" />
+<col width="52%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th>Parameter</th>
+<th>Requirement</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><tt class="docutils literal"><span class="pre">App</span></tt></td>
+<td><a class="reference" href="#type-only-template-id">type-only-template-id</a></td>
+<td>A <a class="reference" href="#type-only-template">type-only-template</a> application</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="expression-semantics">
+<h2><a class="toc-backref" href="#id19" name="expression-semantics">Expression semantics</a></h2>
+<p>For a <a class="reference" href="#type-only-template">type-only-template</a> <tt class="docutils literal"><span class="pre">F</span></tt>, and arbitrary types <tt class="docutils literal"><span class="pre">a1</span></tt>,... <tt class="docutils literal"><span class="pre">an</span></tt>:</p>
+<pre class="literal-block">
+typedef application_parts&lt;F&lt;a1,a2,...an&gt; &gt;::type g;
+</pre>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference" href="http://www.boost.org/libs/mpl/doc/refmanual/vector.html">vector</a>.</td>
+</tr>
+<tr class="field"><th class="field-name">Semantics:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">g</span></tt> is a <a class="reference" href="http://www.boost.org/libs/mpl/doc/refmanual/vector.html">vector</a> such that</p>
+<pre class="literal-block">
+apply<em>n</em>&lt; front&lt;g&gt;::type, pop_front&lt;g&gt;::type &gt;::type
+</pre>
+<p>is identical to</p>
+<pre class="last literal-block">
+F&lt;a1,<em>...</em>a<em>n</em>&gt;
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="example">
+<h2><a class="toc-backref" href="#id20" name="example">Example</a></h2>
+<pre class="literal-block">
+struct left{};
+struct right{};
+
+BOOST_MPL_ASSERT(( is_same&lt; 
+      application_parts&lt;inherit&lt;left,right&gt; &gt;::type
+    , vector&lt;inherit&lt;arg&lt;1&gt;,arg&lt;2&gt; &gt;,left,right&gt;::type
+    &gt; ));
+</pre>
+</div>
+<div class="section" id="see-also">
+<h2><a class="toc-backref" href="#id21" name="see-also">See also</a></h2>
+<p><a class="reference" href="http://www.boost.org/libs/mpl/doc/refmanual/metafunction.html">Metafunction</a></p>
+</div>
+</div>
+<div class="section" id="child-i-depth-j">
+<h1><a class="toc-backref" href="#id22" name="child-i-depth-j">child_i_depth_j</a></h1>
+<div class="section" id="id4">
+<h2><a class="toc-backref" href="#id23" name="id4">Synopsis</a></h2>
+<pre class="literal-block">
+template
+    &lt; class App
+    , class Child
+    , class Depth
+    , class Parts=application_parts&lt;arg&lt;1&gt; &gt;
+    &gt;
+struct child_i_depth_j
+{
+    typedef <em>unspecified</em> type;
+};
+</pre>
+</div>
+<div class="section" id="id5">
+<h2><a class="toc-backref" href="#id24" name="id5">Description</a></h2>
+<p>A <a class="reference" href="http://www.boost.org/libs/mpl/doc/refmanual/metafunction.html">Metafunction</a> returning the <em>Child</em>::value-th child at depth, <em>Depth</em>::value of
+an <em>n</em>-ary <a class="reference" href="#type-only-template-id">type-only-template-id</a>, where <em>n</em> &gt; <em>Child</em>:value.  Access to
+children at depth=0 should be provided by the optional <em>Parts</em> parameter.</p>
+<p>Currently, only values of <em>n</em> in {1..3} are implemented.</p>
+</div>
+<div class="section" id="id6">
+<h2><a class="toc-backref" href="#id25" name="id6">Header</a></h2>
+<pre class="literal-block">
+#include &lt;boost/mpl/child_i_depth_j.hpp&gt;
+</pre>
+</div>
+<div class="section" id="id7">
+<h2><a class="toc-backref" href="#id26" name="id7">Model of</a></h2>
+<p><a class="reference" href="http://www.boost.org/libs/mpl/doc/refmanual/metafunction.html">Metafunction</a></p>
+</div>
+<div class="section" id="id8">
+<h2><a class="toc-backref" href="#id27" name="id8">Parameters</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="19%" />
+<col width="30%" />
+<col width="52%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th>Parameter</th>
+<th>Requirement</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><tt class="docutils literal"><span class="pre">App</span></tt></td>
+<td><a class="reference" href="#type-only-template-id">type-only-template-id</a></td>
+<td>A <a class="reference" href="#type-only-template">type-only-template</a> application</td>
+</tr>
+<tr><td><tt class="docutils literal"><span class="pre">Child</span></tt></td>
+<td><a class="reference" href="http://www.boost.org/libs/mpl/doc/refmanual/integral-constant.html">Integral Constant</a></td>
+<td>Index of child to access, where indices
+start at 1 (0 corresponds to function)</td>
+</tr>
+<tr><td><tt class="docutils literal"><span class="pre">Depth</span></tt></td>
+<td><a class="reference" href="http://www.boost.org/libs/mpl/doc/refmanual/integral-constant.html">Integral Constant</a></td>
+<td>Depth to go (Depth == 0 corresponds to
+App )</td>
+</tr>
+<tr><td><tt class="docutils literal"><span class="pre">Parts</span></tt></td>
+<td><a class="reference" href="http://www.boost.org/libs/mpl/doc/tutorial/placeholder-expression.html">Placeholder Expression</a></td>
+<td>unary placeholder expresssion which,
+when applied to <tt class="docutils literal"><span class="pre">App</span></tt>, returns its
+parts, P, such that at_c&lt;P,0&gt; is the
+function, and at_c&lt;P,i&gt;, for i=1..n
+are the arguments to that function.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id9">
+<h2><a class="toc-backref" href="#id28" name="id9">Expression semantics</a></h2>
+<p>Given integer literals:</p>
+<blockquote>
+<pre class="literal-block">
+i, such that 1 &lt;= i ;
+j, such that 0 &lt;= j ;
+ml, such that i &lt;= ml, for l=1..j ;
+</pre>
+</blockquote>
+<p>and given types:</p>
+<blockquote>
+<pre class="literal-block">
+a_k_l, for k=1..,j-1,j+1,ml, l=1..j-1 ;
+a_k_j, for k=1..mj ;
+</pre>
+</blockquote>
+<p>and given the following typedef's of <a class="reference" href="#type-only-template-id">type-only-template-id</a> 's:</p>
+<blockquote>
+<pre class="literal-block">
+typedef F_j-1&lt;a_1_j, a_2_j, ..., a_i-1_j,a_i_j,a_i+1_j, ..., a_mj_j&gt; app_j-1;
+...
+typedef F_1  &lt;a_1_2, a_2_2, ..., a_i-1_2,app_2,a_i+1_2, ..., a_m2_2&gt; app_1  ;
+typedef F_0  &lt;a_1_1, a_2_1, ..., a_i-1_1,app_1,a_i+1_1, ..., a_m1_1&gt; app_0  ;
+</pre>
+</blockquote>
+<p>and given the following typedef of a call to child_i_depth_j:</p>
+<blockquote>
+typedef child_i_depth_j&lt;app_0,int_&lt;i&gt;,int_&lt;j&gt; &gt;::type at_i_j;</blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Semantics:</th><td class="field-body"><pre class="first last literal-block">
+is_same&lt;app_0,at_i_j&gt;, for j==0  ;
+is_same&lt;a_i_j,at_i_j&gt;, otherwise ;
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id10">
+<h2><a class="toc-backref" href="#id29" name="id10">Example</a></h2>
+<pre class="literal-block">
+typedef int_&lt;99&gt;     app_3;
+typedef prior&lt;app_3&gt; app_2;
+typedef prior&lt;app_2&gt; app_1;
+typedef prior&lt;app_1&gt; app_0;
+
+BOOST_MPL_ASSERT(( is_same&lt; 
+      child_i_depth_j&lt;app_0,int_&lt;1&gt;,int_&lt;3&gt; &gt;::type
+    , app_3
+    &gt; ));
+</pre>
+</div>
+<div class="section" id="id11">
+<h2><a class="toc-backref" href="#id30" name="id11">See also</a></h2>
+<p><a class="reference" href="http://www.boost.org/libs/mpl/doc/refmanual/metafunction.html">Metafunction</a></p>
+</div>
+</div>
+</div>
+</body>
+</html>
